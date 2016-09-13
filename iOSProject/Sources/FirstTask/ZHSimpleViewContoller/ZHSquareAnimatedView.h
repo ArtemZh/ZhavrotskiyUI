@@ -9,18 +9,18 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    ZHLeftTopPosition       = 0,
-    ZHRightTopPosition      = 1,
-    ZHRightButtomPosition   = 2,
-    ZHLeftButtomPosition    = 3,
+    ZHLeftTopPosition,
+    ZHRightTopPosition,
+    ZHRightButtomPosition,
+    ZHLeftButtomPosition,
     
-    ZHCountPosition         = 4,
+    ZHCountPosition,
 } ZHSquarePosition;
 
 @interface ZHSquareAnimatedView : UIView
 @property (nonatomic, strong) IBOutlet           UIView           *squareView;
 @property (nonatomic, assign)                    ZHSquarePosition     position;
-@property (nonatomic, assign, getter=isAnimated) BOOL                animated;
+@property (nonatomic, readonly, getter=isAnimated) BOOL                animated;
 
 
 

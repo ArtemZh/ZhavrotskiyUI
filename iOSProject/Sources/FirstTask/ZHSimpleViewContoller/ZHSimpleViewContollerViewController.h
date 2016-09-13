@@ -10,7 +10,5 @@
 
 @interface ZHSimpleViewContollerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *startAnimation;
-@property (weak, nonatomic) IBOutlet UIButton *stopAnimation;
 
 @end

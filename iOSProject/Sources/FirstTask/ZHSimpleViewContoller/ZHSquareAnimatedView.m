@@ -36,10 +36,10 @@ static const NSTimeInterval ZHAnimatioDuration = 1;
 #pragma mark -
 #pragma mark Private
 
-- (CGPoint)switchSquarePosition:(ZHSquarePosition)position {
-    switch (position)
-    
-}
-
+//- (CGPoint)switchSquarePosition:(ZHSquarePosition)position {
+//    switch (position)
+//    
+//}
+//
 
 @end

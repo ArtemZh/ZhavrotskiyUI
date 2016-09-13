@@ -20,8 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window = window;
-    
-    ZHSimpleViewContollerViewController *controler = [ZHSimpleViewContollerViewController new];
+    self.window.rootViewController = [ZHSimpleViewContollerViewController new];
+    //ZHSimpleViewContollerViewController *controler = [ZHSimpleViewContollerViewController new];
 
     return YES;
 }
