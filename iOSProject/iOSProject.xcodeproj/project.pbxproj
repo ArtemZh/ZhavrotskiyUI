@@ -16,8 +16,8 @@
 		AC72650E1D86E13D00E6B37C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC7265091D86E13D00E6B37C /* LaunchScreen.storyboard */; };
 		AC72650F1D86E13D00E6B37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC72650B1D86E13D00E6B37C /* Main.storyboard */; };
 		AC7265141D86E1C300E6B37C /* ZHObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7265131D86E1C300E6B37C /* ZHObservableObject.m */; };
-		AC7265271D870C4500E6B37C /* ZHSimpleViewContollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7265251D870C4500E6B37C /* ZHSimpleViewContollerViewController.m */; };
-		AC7265281D870C4500E6B37C /* ZHSimpleViewContollerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7265261D870C4500E6B37C /* ZHSimpleViewContollerViewController.xib */; };
+		AC7265271D870C4500E6B37C /* ZHSimpleViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7265251D870C4500E6B37C /* ZHSimpleViewContoller.m */; };
+		AC7265281D870C4500E6B37C /* ZHSimpleViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7265261D870C4500E6B37C /* ZHSimpleViewContoller.xib */; };
 		AC72652A1D8711FD00E6B37C /* ZHSquareAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7265291D8711FD00E6B37C /* ZHSquareAnimatedView.m */; };
 		F1DDD7EAC8F14BE36976B914 /* libPods-iOSProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5378311673DC98B0A7E7430B /* libPods-iOSProject.a */; };
 /* End PBXBuildFile section */
@@ -45,6 +45,7 @@
 		5378311673DC98B0A7E7430B /* libPods-iOSProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AC6842713F979D028FE02C /* Pods-iOSProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSProject/Pods-iOSProject.release.xcconfig"; sourceTree = "<group>"; };
 		6B6E8FDF4309FEA1ADD42C3C /* libPods-iOSProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC50DAF81D8B103300E76575 /* ZHMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMacros.h; sourceTree = "<group>"; };
 		AC7264CB1D86DDD500E6B37C /* iOSProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7264CF1D86DDD500E6B37C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC7264DF1D86DDD600E6B37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,9 +62,9 @@
 		AC72650C1D86E13D00E6B37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC7265121D86E1C300E6B37C /* ZHObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHObservableObject.h; sourceTree = "<group>"; };
 		AC7265131D86E1C300E6B37C /* ZHObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHObservableObject.m; sourceTree = "<group>"; };
-		AC7265241D870C4500E6B37C /* ZHSimpleViewContollerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSimpleViewContollerViewController.h; sourceTree = "<group>"; };
-		AC7265251D870C4500E6B37C /* ZHSimpleViewContollerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSimpleViewContollerViewController.m; sourceTree = "<group>"; };
-		AC7265261D870C4500E6B37C /* ZHSimpleViewContollerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHSimpleViewContollerViewController.xib; sourceTree = "<group>"; };
+		AC7265241D870C4500E6B37C /* ZHSimpleViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHSimpleViewContoller.h; sourceTree = "<group>"; };
+		AC7265251D870C4500E6B37C /* ZHSimpleViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSimpleViewContoller.m; sourceTree = "<group>"; };
+		AC7265261D870C4500E6B37C /* ZHSimpleViewContoller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHSimpleViewContoller.xib; sourceTree = "<group>"; };
 		AC7265291D8711FD00E6B37C /* ZHSquareAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSquareAnimatedView.m; sourceTree = "<group>"; };
 		AC72652B1D87121400E6B37C /* ZHSquareAnimatedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHSquareAnimatedView.h; sourceTree = "<group>"; };
 		C44904CAB659E45E81173A99 /* Pods-iOSProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSProject/Pods-iOSProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		AC7265101D86E1C300E6B37C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				AC50DAF81D8B103300E76575 /* ZHMacros.h */,
 				AC7265111D86E1C300E6B37C /* ZHObservableObject */,
 			);
 			path = Library;
@@ -205,9 +207,9 @@
 		AC7265231D870C4500E6B37C /* ZHSimpleViewContoller */ = {
 			isa = PBXGroup;
 			children = (
-				AC7265241D870C4500E6B37C /* ZHSimpleViewContollerViewController.h */,
-				AC7265251D870C4500E6B37C /* ZHSimpleViewContollerViewController.m */,
-				AC7265261D870C4500E6B37C /* ZHSimpleViewContollerViewController.xib */,
+				AC7265241D870C4500E6B37C /* ZHSimpleViewContoller.h */,
+				AC7265251D870C4500E6B37C /* ZHSimpleViewContoller.m */,
+				AC7265261D870C4500E6B37C /* ZHSimpleViewContoller.xib */,
 				AC72652B1D87121400E6B37C /* ZHSquareAnimatedView.h */,
 				AC7265291D8711FD00E6B37C /* ZHSquareAnimatedView.m */,
 			);
@@ -337,7 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC7265281D870C4500E6B37C /* ZHSimpleViewContollerViewController.xib in Resources */,
+				AC7265281D870C4500E6B37C /* ZHSimpleViewContoller.xib in Resources */,
 				AC72650D1D86E13D00E6B37C /* Assets.xcassets in Resources */,
 				AC72650F1D86E13D00E6B37C /* Main.storyboard in Resources */,
 				AC72650E1D86E13D00E6B37C /* LaunchScreen.storyboard in Resources */,
@@ -458,7 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC7265271D870C4500E6B37C /* ZHSimpleViewContollerViewController.m in Sources */,
+				AC7265271D870C4500E6B37C /* ZHSimpleViewContoller.m in Sources */,
 				AC7265041D86E0B500E6B37C /* ZHDelegate.m in Sources */,
 				AC72652A1D8711FD00E6B37C /* ZHSquareAnimatedView.m in Sources */,
 				AC7264D01D86DDD500E6B37C /* main.m in Sources */,

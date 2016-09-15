@@ -8,7 +8,7 @@
 
 #import "ZHDelegate.h"
 
-#import "ZHSimpleViewContollerViewController.h"
+#import "ZHSimpleViewContoller.h"
 
 @interface ZHDelegate ()
 
@@ -20,9 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window = window;
-    self.window.rootViewController = [ZHSimpleViewContollerViewController new];
-    //ZHSimpleViewContollerViewController *controler = [ZHSimpleViewContollerViewController new];
-
+    self.window.rootViewController = [ZHSimpleViewContoller new];
+//    ZHSimpleViewContoller *controler = [ZHSimpleViewContoller new];
+    [window makeKeyAndVisible];
     return YES;
 }
 
