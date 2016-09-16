@@ -10,13 +10,14 @@
 
 #import "ZHMacros.h"
 
-#import "ZHSimpleViewContoller.h"
+#import "ZHSimpleViewContollerViewController.h"
 
 
-static const CGFloat    kZHSquareSideSize      = 80.f;
-static const CGFloat    kZHAnimationDuration   = 0.8f;
-static const CGFloat    kZHAnimationDelay      = 0.0f;
-static const NSUInteger kZHCornersCount        = 4;
+static const CGFloat    kZHSquareSideSize           = 80.f;
+static const CGFloat    kZHAnimationDuration        = 0.8f;
+static const CGFloat    kZHAnimationDelay           = 0.0f;
+static const CGFloat    kZHAnimationButtomDelay     = 1.0f;
+static const NSUInteger kZHCornersCount             = 4;
 
 uint8_t ZHRandomNextPosition() {
      uint8_t result = arc4random_uniform(2)-1;
@@ -34,6 +35,8 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition animated:(BOOL)animated;
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition animated:(BOOL)animated complitionHandler:(ZHHandler)handler;
+
+- (NSString *)changeTitle;
 
 @end
 
@@ -143,6 +146,39 @@ uint32_t ZHRandomWithCount(uint32_t count) {
     }
     
     return sqaure;
+}
+
+- (void)changePlayButtom {
+    
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.duration = kZHAnimationButtomDelay;
+    [self.animatedButtom.layer addAnimation:transition forKey:kCATransition];
+    
+    self.animatedButtom.enabled = NO;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, kZHAnimationButtomDelay * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.animatedButtom.enabled = YES;
+        [self.animatedButtom setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        
+    });
+
+    NSString  *title = self.changeTitle;
+    [self.animatedButtom setTitle:title forState:UIControlStateNormal];
+    [self.animatedButtom setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+}
+
+- (NSString *)changeTitle {
+    NSString *playTitle = @"Play";
+    NSString *stopTitle = @"Stop";
+    NSString *currentTitle = self.animatedButtom.currentTitle;
+    
+    if (currentTitle == playTitle) {
+        return stopTitle;
+    }
+    
+    return playTitle;
 }
 
 @end

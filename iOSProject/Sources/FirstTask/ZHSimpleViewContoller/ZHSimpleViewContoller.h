@@ -1,5 +1,5 @@
 //
-//  ZHSimpleViewContoller.h
+//  ZHSimpleViewContollerViewController.h
 //  iOSProject
 //
 //  Created by Artem Zhavrotskiy on 12.09.16.
@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZHSimpleViewContoller : UIViewController
+@interface ZHSimpleViewContollerViewController : UIViewController
 
 - (IBAction)onAutoButton:(id)sender;
 - (IBAction)onRandomButton:(id)sender;
+- (IBAction)animatedButtom:(id)sender;
 
 
 @end

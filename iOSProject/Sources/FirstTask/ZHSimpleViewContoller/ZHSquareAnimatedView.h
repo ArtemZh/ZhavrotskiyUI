@@ -23,6 +23,8 @@ typedef void(^ZHHandler)(void);
 @property (nonatomic, strong) IBOutlet UIView           *squareView;
 @property (nonatomic, readwrite) IBOutlet UIButton         *autoAnimation;
 @property (nonatomic, strong) IBOutlet UIButton         *randomSquarePosition;
+@property (nonatomic, strong) IBOutlet UIButton *animatedButtom;
+
 
 @property (nonatomic, assign) ZHSquarePosition          squarePosition;
 
@@ -32,5 +34,7 @@ typedef void(^ZHHandler)(void);
 
 - (void)startAutoAnimation;
 - (void)randomSquarePostion;
+- (void)changePlayButtom;
+
 
 @end
