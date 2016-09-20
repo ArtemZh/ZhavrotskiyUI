@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZHSimpleViewContollerViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZHSimpleViewContoller">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="H5B-1e-4NY"/>
             </connections>
@@ -37,13 +36,13 @@
                     <rect key="frame" x="109" y="350" width="102" height="30"/>
                     <state key="normal" title="Start"/>
                     <connections>
-                        <action selector="animatedButtom:" destination="-1" eventType="touchUpInside" id="K1n-cc-ulR"/>
+                        <action selector="animatedButton:" destination="-1" eventType="touchUpInside" id="K1n-cc-ulR"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="animatedButtom" destination="1fq-5d-CqK" id="yOg-gu-p6O"/>
+                <outlet property="animatedButton" destination="1fq-5d-CqK" id="yOg-gu-p6O"/>
                 <outlet property="autoAnimation" destination="hTg-Ca-LIG" id="QOW-rn-xGK"/>
                 <outlet property="randomSquarePosition" destination="eAL-Gy-Eel" id="s5w-d2-8gr"/>
                 <outlet property="squareView" destination="7Jt-UL-UD7" id="13V-38-bMU"/>
