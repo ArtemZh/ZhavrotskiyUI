@@ -28,8 +28,5 @@ ZHViewControllerBaseViewPropertyWithGetter(ZHSimpleViewContoller, squareAnimated
     [self.squareAnimatedView moveToRandomPostion];
 }
 
-- (IBAction)animatedButton:(id)sender {
-    [self.squareAnimatedView changePlayButton];
-}
 
 @end

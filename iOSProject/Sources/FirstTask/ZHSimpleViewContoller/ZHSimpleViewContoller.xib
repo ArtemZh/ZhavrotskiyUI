@@ -15,13 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTg-Ca-LIG" userLabel="Auto Animation">
-                    <rect key="frame" x="143" y="269" width="34" height="30"/>
-                    <state key="normal" title="Start"/>
-                    <connections>
-                        <action selector="onAutoButton:" destination="-1" eventType="touchUpInside" id="E6N-eb-d5B"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jt-UL-UD7" userLabel="Square View">
                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,17 +26,16 @@
                         <action selector="onRandomButton:" destination="-1" eventType="touchUpInside" id="bKg-Rq-yEG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fq-5d-CqK">
-                    <rect key="frame" x="109" y="350" width="102" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTg-Ca-LIG" userLabel="Auto Animation">
+                    <rect key="frame" x="124" y="269" width="73" height="30"/>
                     <state key="normal" title="Start"/>
                     <connections>
-                        <action selector="animatedButton:" destination="-1" eventType="touchUpInside" id="K1n-cc-ulR"/>
+                        <action selector="onAutoButton:" destination="-1" eventType="touchUpInside" id="E6N-eb-d5B"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="animatedButton" destination="1fq-5d-CqK" id="yOg-gu-p6O"/>
                 <outlet property="autoAnimation" destination="hTg-Ca-LIG" id="QOW-rn-xGK"/>
                 <outlet property="randomSquarePosition" destination="eAL-Gy-Eel" id="s5w-d2-8gr"/>
                 <outlet property="squareView" destination="7Jt-UL-UD7" id="13V-38-bMU"/>

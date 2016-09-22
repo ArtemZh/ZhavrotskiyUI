@@ -14,9 +14,9 @@
 
 static const CGFloat    kZHAnimationDuration        = 0.8f;
 static const CGFloat    kZHAnimationDelay           = 0.0f;
-static const CGFloat    kZHAnimationButtonDelay     = 1.0f;
-static NSString * const kZHPlayTitle = @"START";
-static NSString * const kZHStopTitle  = @"STOP";
+
+static NSString * const kZHPlayTitle = @"Start";
+static NSString * const kZHStopTitle  = @"Stop";
 
 
 uint32_t ZHRandomWithCount(uint32_t count) {
@@ -27,8 +27,8 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 @property (nonatomic, assign) BOOL      shouldStop;
 
 
-- (void)animationSwitcher;
-- (void)shouldStopAnimation;
+- (void)setAnimating:(BOOL)animating;
+- (void)animate;
 
 - (CGPoint)squarePathWithType:(ZHSquarePosition)type;
 - (ZHSquarePosition)nextSquarePosition;
@@ -38,7 +38,6 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 
 - (void)changePlayButtonTitle;
 
-- (NSString *)changeTitle;
 @end
 
 @implementation ZHSquareAnimatedView
@@ -46,15 +45,16 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 #pragma mark -
 #pragma mark Accessors
 
-- (void)animationSwitcher {
-    if (self.animating) {
+- (void)setAnimating:(BOOL)animating {
+    [self changePlayButtonTitle];
+    if (_animating) {
         self.shouldStop = !self.shouldStop;
     } else {
-        self.animating = YES;
-        [self shouldStopAnimation];
+        _animating = YES;
+        [self animate];
     }
     
-    [self changePlayButtonTitle];
+    
 }
 
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition {
@@ -70,7 +70,7 @@ uint32_t ZHRandomWithCount(uint32_t count) {
     ZHSquarePosition type = self.squarePosition;
     
     do {
-        randomPosition = ZHRandomWithCount(ZHCountPosition);
+        randomPosition = ZHRandomWithCount(ZHSquarePositionCount);
         if (randomPosition != type) {
             break;
         }
@@ -82,18 +82,18 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 #pragma mark -
 #pragma mark Private Implementations
 
-- (void)shouldStopAnimation {
+- (void)animate {
     ZHWeakify(self);
     
     ZHSquarePosition position = [self nextSquarePosition];
     [self setSquarePosition:position animated:YES complitionHandler:^{
         ZHStrongify(self);
         if (self.shouldStop) {
-            self.animating = NO;
+            _animating = NO;
             self.shouldStop = NO;
             
         } else {
-            [self shouldStopAnimation];
+            [self animate];
         }
     }];
 }
@@ -123,7 +123,7 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 }
 
 - (ZHSquarePosition)nextSquarePosition {
-    return (self.squarePosition + 1) % ZHCountPosition;
+    return (self.squarePosition + 1) % ZHSquarePositionCount;
 }
 
 - (CGPoint)squarePath {
@@ -141,15 +141,15 @@ uint32_t ZHRandomWithCount(uint32_t count) {
     CGPoint maxPoint = [self squarePath];
     
     switch (type) {
-        case ZHRightTopPosition:
+        case ZHSquarePositionRightTop:
             point.x = maxPoint.x;
             break;
             
-        case ZHRightBottomPosition:
+        case ZHSquarePositionRightBottom:
             point = maxPoint;
             break;
             
-        case ZHLeftBottomPosition:
+        case ZHSquarePositionLeftBottom:
             point.y = maxPoint.y;
             break;
             
@@ -160,48 +160,9 @@ uint32_t ZHRandomWithCount(uint32_t count) {
     return point;
 }
 
-- (void)changePlayButton {
-    
-    CATransition *transition = [CATransition animation];
-    transition.type = kCATransitionFade;
-    transition.duration = kZHAnimationButtonDelay;
-    [self.animatedButton.layer addAnimation:transition forKey:kCATransition];
-    
-    self.animatedButton.enabled = NO;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, kZHAnimationButtonDelay * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.animatedButton.enabled = YES;
-        [self.animatedButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        
-    });
-
-    NSString  *title = self.changeTitle;
-    [self.animatedButton setTitle:title forState:UIControlStateNormal];
-    [self.animatedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-}
-
-- (NSString *)changeTitle {
-    
-    NSString *playTitle = @"Play";
-    NSString *stopTitle = @"Stop";
-    NSString *currentTitle = self.animatedButton.currentTitle;
-    
-    if (currentTitle == playTitle) {
-        return stopTitle;
-    }
-    
-    return playTitle;
-}
 
 - (void)changePlayButtonTitle {
-    NSString *buttonPlayTitle = nil;
-    if (self.animating) {
-        buttonPlayTitle = kZHStopTitle;
-    } else {
-        buttonPlayTitle = kZHPlayTitle;
-    }
-    
+    NSString *buttonPlayTitle = !self.animating ? kZHStopTitle : kZHPlayTitle;
     [self.autoAnimation setTitle:buttonPlayTitle forState:UIControlStateNormal];
 }
 

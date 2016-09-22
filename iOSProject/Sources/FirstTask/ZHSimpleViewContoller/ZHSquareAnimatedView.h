@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    ZHLeftTopPosition,
-    ZHRightTopPosition,
-    ZHRightBottomPosition,
-    ZHLeftBottomPosition,
+    ZHSquarePositionLeftTop,
+    ZHSquarePositionRightTop,
+    ZHSquarePositionRightBottom,
+    ZHSquarePositionLeftBottom,
     
-    ZHCountPosition,
+    ZHSquarePositionCount,
 } ZHSquarePosition;
 
 typedef void(^ZHHandler)(void);
@@ -31,7 +31,5 @@ typedef void(^ZHHandler)(void);
 @property (nonatomic, assign, getter=isAnimating) BOOL  animating;
 
 - (void)moveToRandomPostion;
-- (void)changePlayButton;
-
 
 @end

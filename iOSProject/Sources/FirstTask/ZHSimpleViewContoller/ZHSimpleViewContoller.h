@@ -12,7 +12,7 @@
 
 - (IBAction)onAutoButton:(id)sender;
 - (IBAction)onRandomButton:(id)sender;
-- (IBAction)animatedButton:(id)sender;
+
 
 
 @end
