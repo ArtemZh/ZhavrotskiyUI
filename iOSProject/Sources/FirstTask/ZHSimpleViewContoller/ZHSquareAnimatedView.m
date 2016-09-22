@@ -15,21 +15,30 @@
 static const CGFloat    kZHAnimationDuration        = 0.8f;
 static const CGFloat    kZHAnimationDelay           = 0.0f;
 static const CGFloat    kZHAnimationButtonDelay     = 1.0f;
+static NSString * const kZHPlayTitle = @"START";
+static NSString * const kZHStopTitle  = @"STOP";
+
 
 uint32_t ZHRandomWithCount(uint32_t count) {
     return arc4random_uniform(count);
 }
 
 @interface ZHSquareAnimatedView ()
+@property (nonatomic, assign) BOOL      shouldStop;
 
-- (CGPoint)squareWithType:(ZHSquarePosition)type;
+
+- (void)animationSwitcher;
+- (void)shouldStopAnimation;
+
+- (CGPoint)squarePathWithType:(ZHSquarePosition)type;
 - (ZHSquarePosition)nextSquarePosition;
 
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition animated:(BOOL)animated;
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition animated:(BOOL)animated complitionHandler:(ZHHandler)handler;
 
-- (NSString *)changeTitle;
+- (void)changePlayButtonTitle;
 
+- (NSString *)changeTitle;
 @end
 
 @implementation ZHSquareAnimatedView
@@ -37,19 +46,16 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 #pragma mark -
 #pragma mark Accessors
 
-//- (void)setAnimating:(BOOL)animating {
-//    if (animating && !_shouldStop) {
-//        [self startAnimation];
-//    }
-//
-//    
-//    if (_animating && !animating) {
-//        _shouldStop = YES;
-//    } else if (_animating && animating) {
-//        _shouldStop = NO;
-//    }
-//    
-//}
+- (void)animationSwitcher {
+    if (self.animating) {
+        self.shouldStop = !self.shouldStop;
+    } else {
+        self.animating = YES;
+        [self shouldStopAnimation];
+    }
+    
+    [self changePlayButtonTitle];
+}
 
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition {
     [self setSquarePosition:squarePosition animated:YES];
@@ -58,21 +64,6 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 #pragma mark -
 #pragma mark Public Implementations
 
-- (void)startAnimation {
-    ZHWeakify(self);
-    ZHSquarePosition position = [self nextSquarePosition];
-    [self setSquarePosition:position animated:YES complitionHandler:^{
-        ZHStrongify(self);
-        if (self.shouldStop) {
-            self.animating = NO;
-            self.shouldStop = NO;
-            
-        }
-        
-        [self startAnimation];
-
-    }];
-}
 
 - (void)moveToRandomPostion {
     uint32_t randomPosition = 0;
@@ -91,6 +82,23 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 #pragma mark -
 #pragma mark Private Implementations
 
+- (void)shouldStopAnimation {
+    ZHWeakify(self);
+    
+    ZHSquarePosition position = [self nextSquarePosition];
+    [self setSquarePosition:position animated:YES complitionHandler:^{
+        ZHStrongify(self);
+        if (self.shouldStop) {
+            self.animating = NO;
+            self.shouldStop = NO;
+            
+        } else {
+            [self shouldStopAnimation];
+        }
+    }];
+}
+
+
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition animated:(BOOL)animated {
     [self setSquarePosition:squarePosition animated:animated complitionHandler:nil];
 }
@@ -102,7 +110,7 @@ uint32_t ZHRandomWithCount(uint32_t count) {
                             options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              CGRect frame = self.squareView.frame;
-                             frame.origin = [self squareWithType:squarePosition];
+                             frame.origin = [self squarePathWithType:squarePosition];
                              self.squareView.frame = frame;
                          }
                          completion:^(BOOL shouldFinish) {
@@ -118,7 +126,7 @@ uint32_t ZHRandomWithCount(uint32_t count) {
     return (self.squarePosition + 1) % ZHCountPosition;
 }
 
-- (CGPoint)viewSize {
+- (CGPoint)squarePath {
     CGRect viewBounds = [self bounds];
     CGRect squareView = [self.squareView bounds];
     
@@ -128,20 +136,20 @@ uint32_t ZHRandomWithCount(uint32_t count) {
     return CGPointMake(averageWidth, averageHeight);
 }
 
-- (CGPoint)squareWithType:(ZHSquarePosition)type {
+- (CGPoint)squarePathWithType:(ZHSquarePosition)type {
     CGPoint point = CGPointMake(0, 0);
-    CGPoint maxPoint = [self viewSize];
+    CGPoint maxPoint = [self squarePath];
     
     switch (type) {
-        case ZHLeftTopPosition:
+        case ZHRightTopPosition:
             point.x = maxPoint.x;
             break;
             
-        case ZHRightTopPosition:
+        case ZHRightBottomPosition:
             point = maxPoint;
             break;
             
-        case ZHRightButtonPosition:
+        case ZHLeftBottomPosition:
             point.y = maxPoint.y;
             break;
             
@@ -174,6 +182,7 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 }
 
 - (NSString *)changeTitle {
+    
     NSString *playTitle = @"Play";
     NSString *stopTitle = @"Stop";
     NSString *currentTitle = self.animatedButton.currentTitle;
@@ -183,6 +192,17 @@ uint32_t ZHRandomWithCount(uint32_t count) {
     }
     
     return playTitle;
+}
+
+- (void)changePlayButtonTitle {
+    NSString *buttonPlayTitle = nil;
+    if (self.animating) {
+        buttonPlayTitle = kZHStopTitle;
+    } else {
+        buttonPlayTitle = kZHPlayTitle;
+    }
+    
+    [self.autoAnimation setTitle:buttonPlayTitle forState:UIControlStateNormal];
 }
 
 @end

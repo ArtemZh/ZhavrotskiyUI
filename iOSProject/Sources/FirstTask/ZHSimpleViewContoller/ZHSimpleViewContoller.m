@@ -21,7 +21,6 @@ ZHViewControllerBaseViewPropertyWithGetter(ZHSimpleViewContoller, squareAnimated
 
 - (IBAction)onAutoButton:(id)sender {
     ZHSquareAnimatedView *squareAnimatedView = self.squareAnimatedView;
-    [self.squareAnimatedView startAnimation];
     squareAnimatedView.animating = !squareAnimatedView.animating;
 }
 

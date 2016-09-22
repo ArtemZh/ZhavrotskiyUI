@@ -10,9 +10,9 @@
 
 typedef enum {
     ZHLeftTopPosition,
-    ZHLeftButtonPosition,
-    ZHRightButtonPosition,
     ZHRightTopPosition,
+    ZHRightBottomPosition,
+    ZHLeftBottomPosition,
     
     ZHCountPosition,
 } ZHSquarePosition;
@@ -28,11 +28,8 @@ typedef void(^ZHHandler)(void);
 
 @property (nonatomic, assign) ZHSquarePosition          squarePosition;
 
-@property (nonatomic, assign) BOOL                      shouldStop;
-
 @property (nonatomic, assign, getter=isAnimating) BOOL  animating;
 
-- (void)startAnimation;
 - (void)moveToRandomPostion;
 - (void)changePlayButton;
 

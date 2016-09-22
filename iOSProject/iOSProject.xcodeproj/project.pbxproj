@@ -66,7 +66,7 @@
 		AC7265251D870C4500E6B37C /* ZHSimpleViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSimpleViewContoller.m; sourceTree = "<group>"; };
 		AC7265261D870C4500E6B37C /* ZHSimpleViewContoller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHSimpleViewContoller.xib; sourceTree = "<group>"; };
 		AC7265291D8711FD00E6B37C /* ZHSquareAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHSquareAnimatedView.m; sourceTree = "<group>"; };
-		AC72652B1D87121400E6B37C /* ZHSquareAnimatedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHSquareAnimatedView.h; sourceTree = "<group>"; };
+		AC72652B1D87121400E6B37C /* ZHSquareAnimatedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ZHSquareAnimatedView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C44904CAB659E45E81173A99 /* Pods-iOSProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSProject/Pods-iOSProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
