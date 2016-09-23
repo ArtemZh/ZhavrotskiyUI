@@ -46,7 +46,6 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 #pragma mark Accessors
 
 - (void)setAnimating:(BOOL)animating {
-    [self changePlayButtonTitle];
     if (_animating) {
         self.shouldStop = !self.shouldStop;
     } else {
@@ -54,7 +53,7 @@ uint32_t ZHRandomWithCount(uint32_t count) {
         [self animate];
     }
     
-    
+//    [self changePlayButtonTitle];
 }
 
 - (void)setSquarePosition:(ZHSquarePosition)squarePosition {
@@ -162,7 +161,7 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 
 
 - (void)changePlayButtonTitle {
-    NSString *buttonPlayTitle = !self.animating ? kZHStopTitle : kZHPlayTitle;
+    NSString *buttonPlayTitle = _animating ? kZHStopTitle : kZHPlayTitle;
     [self.autoAnimation setTitle:buttonPlayTitle forState:UIControlStateNormal];
 }
 
