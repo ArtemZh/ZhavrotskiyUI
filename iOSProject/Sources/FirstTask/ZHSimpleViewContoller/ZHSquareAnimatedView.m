@@ -26,8 +26,6 @@ uint32_t ZHRandomWithCount(uint32_t count) {
 @interface ZHSquareAnimatedView ()
 @property (nonatomic, assign) BOOL      shouldStop;
 
-
-- (void)setAnimating:(BOOL)animating;
 - (void)animate;
 
 - (CGPoint)squarePathWithType:(ZHSquarePosition)type;

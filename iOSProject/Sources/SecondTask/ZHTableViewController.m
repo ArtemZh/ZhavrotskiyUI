@@ -7,6 +7,12 @@
 //
 
 #import "ZHTableViewController.h"
+#import "ZHUserCell.h"
+
+#import "ZHUserCell.h"
+#import "UITableView+ZHExtension.h"
+#import "UINib+ZHExtension.h"
+#import "ZHUser.h"
 
 @interface ZHTableViewController ()
 @property NSMutableArray *objectsCell;
@@ -31,12 +37,17 @@
     
 }
 
+
+
+
 - (void)addNewObject:(id)sender {
     NSString *title = @"test";
     if (!self.objectsCell) {
         self.objectsCell = [[NSMutableArray alloc] init];
     }
-    [self.objectsCell insertObject:title atIndex:0];
+    
+    
+    [self.objectsCell insertObject: atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }

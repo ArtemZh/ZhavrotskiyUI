@@ -10,4 +10,7 @@
 
 @interface ZHTableViewController : UITableViewController
 
+- (IBAction)onAddButton:(id)sender;
+- (IBAction)onEditButton:(id)sender;
+
 @end
