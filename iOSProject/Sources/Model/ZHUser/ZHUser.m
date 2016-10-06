@@ -24,6 +24,7 @@
     if (self) {
         self.name = [NSString randomName];
         self.surname = [NSString randomName];
+        
     }
     return self;
 }

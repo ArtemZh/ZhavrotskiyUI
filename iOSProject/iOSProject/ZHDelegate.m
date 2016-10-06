@@ -24,9 +24,9 @@
     self.window = window;
 
 //    ZHSimpleViewContoller *controler = [ZHSimpleViewContoller new];
-//    ZHTableViewController *controller = [ZHTableViewController new];
+    ZHTableViewController *controller = [ZHTableViewController new];
     
-    ZHTestViewController *controller = [ZHTestViewController new];
+//    ZHTestViewController *controller = [ZHTestViewController new];
 
     window.rootViewController = controller;
 

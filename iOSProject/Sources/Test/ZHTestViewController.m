@@ -10,6 +10,7 @@
 #import "ZHTestView.h"
 #import "TestTableModel.h"
 #import "ZHUserCell.h"
+#import "ZHUserData.h"
 #import "UITableView+ZHExtension.h"
 #import "UINib+ZHExtension.h"
 #import "ZHUser.h"
@@ -44,17 +45,18 @@ ZHViewControllerBaseViewPropertyWithGetter(ZHTestViewController, testView, ZHTes
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //    NSInteger count = [TestTableModel usersList].list.count;
-    return 100;
+    return 10;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     ZHUserCell *cell = [tableView reusableCellfromNibWithClass:[ZHUserCell class]];
-//    ZHUser * object = self.user[indexPath.row];
+    ZHUser * object = [ZHUser new];
     
     
-//    [cell fillInfoFromObject:object];
-    
+    [cell fillWithModel:object];
+    cell.userName.text = self.user.name;
     return cell;
 }
 

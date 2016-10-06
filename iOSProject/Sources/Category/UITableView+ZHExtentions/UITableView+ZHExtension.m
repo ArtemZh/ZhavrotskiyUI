@@ -19,10 +19,9 @@
         UINib *nib = [UINib nibWithClass:cls];
         cell = [nib objectWithClass:[cls class]];
         
-        return cell;
     }
     
-    return nil;
+    return cell;
 }
 
 @end

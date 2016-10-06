@@ -13,6 +13,14 @@
 @implementation ZHUserCell
 
 #pragma mark -
+#pragma mark Initialization and deallocation
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setUser:(ZHUser *)user {
@@ -27,6 +35,9 @@
 #pragma mark Public Implementations
 
 - (void)fillWithModel:(ZHUser *)user {
+    NSString * text =[user fullName];
+    text = @"test";
+    self.userName.text = text;
     self.userName.text = self.user.fullName;
     self.userImageView.image = user.image;
     

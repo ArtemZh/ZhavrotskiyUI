@@ -35,6 +35,7 @@
 		AC7C3B7E1DA414AB006046D8 /* ZHUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C3B7D1DA414AB006046D8 /* ZHUserData.m */; };
 		AC7C3B831DA41D0E006046D8 /* UITableView+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C3B821DA41D0E006046D8 /* UITableView+ZHExtension.m */; };
 		AC7C3B871DA41E29006046D8 /* UINib+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7C3B861DA41E29006046D8 /* UINib+ZHExtension.m */; };
+		ACF4BD1F1DA6BD27008346AF /* ZHUsersList.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF4BD1E1DA6BD27008346AF /* ZHUsersList.m */; };
 		F1DDD7EAC8F14BE36976B914 /* libPods-iOSProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5378311673DC98B0A7E7430B /* libPods-iOSProject.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,8 @@
 		AC7C3B821DA41D0E006046D8 /* UITableView+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ZHExtension.m"; sourceTree = "<group>"; };
 		AC7C3B851DA41E29006046D8 /* UINib+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+ZHExtension.h"; sourceTree = "<group>"; };
 		AC7C3B861DA41E29006046D8 /* UINib+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+ZHExtension.m"; sourceTree = "<group>"; };
+		ACF4BD1D1DA6BD27008346AF /* ZHUsersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHUsersList.h; sourceTree = "<group>"; };
+		ACF4BD1E1DA6BD27008346AF /* ZHUsersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHUsersList.m; sourceTree = "<group>"; };
 		C44904CAB659E45E81173A99 /* Pods-iOSProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSProject/Pods-iOSProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,6 +285,7 @@
 		AC7C3B451DA2B382006046D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ACF4BD1C1DA6BD0D008346AF /* ZHUsersModel */,
 				AC7C3B741DA403B0006046D8 /* ZHUser */,
 			);
 			path = Model;
@@ -390,6 +394,15 @@
 				AC7C3B861DA41E29006046D8 /* UINib+ZHExtension.m */,
 			);
 			path = UINib;
+			sourceTree = "<group>";
+		};
+		ACF4BD1C1DA6BD0D008346AF /* ZHUsersModel */ = {
+			isa = PBXGroup;
+			children = (
+				ACF4BD1D1DA6BD27008346AF /* ZHUsersList.h */,
+				ACF4BD1E1DA6BD27008346AF /* ZHUsersList.m */,
+			);
+			path = ZHUsersModel;
 			sourceTree = "<group>";
 		};
 		F91EEEB4A460BB23E507F620 /* Pods */ = {
@@ -648,6 +661,7 @@
 				AC72652A1D8711FD00E6B37C /* ZHSquareAnimatedView.m in Sources */,
 				AC7264D01D86DDD500E6B37C /* main.m in Sources */,
 				AC7265141D86E1C300E6B37C /* ZHObservableObject.m in Sources */,
+				ACF4BD1F1DA6BD27008346AF /* ZHUsersList.m in Sources */,
 				AC7C3B721DA3FBF3006046D8 /* NSString+ZHExtensions.m in Sources */,
 				AC520E5E1D95A80D000BF0AA /* ZHTableViewController.m in Sources */,
 				AC520E621D95A852000BF0AA /* ZHTableView.m in Sources */,

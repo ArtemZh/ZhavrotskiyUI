@@ -8,11 +8,16 @@
 
 #import "ZHTableViewController.h"
 #import "ZHUserCell.h"
-
-#import "ZHUserCell.h"
+#import "ZHUserData.h"
 #import "UITableView+ZHExtension.h"
 #import "UINib+ZHExtension.h"
 #import "ZHUser.h"
+
+
+
+#import "ZHMacros.h"
+
+
 
 @interface ZHTableViewController ()
 @property NSMutableArray *objectsCell;
@@ -45,9 +50,9 @@
     if (!self.objectsCell) {
         self.objectsCell = [[NSMutableArray alloc] init];
     }
+//    ZHUser *user = [ZHUser init];
     
-    
-    [self.objectsCell insertObject: atIndex:0];
+    [self.objectsCell insertObject:title atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -61,10 +66,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//    
+//    NSString *object = self.objectsCell[indexPath.row];
+//    cell.textLabel.text = [object description];
+//
+    ZHUserCell *cell = [tableView reusableCellfromNibWithClass:[ZHUserCell class]];
+    ZHUser * object = [ZHUser new];
     
-    NSString *object = self.objectsCell[indexPath.row];
-    cell.textLabel.text = [object description];
+    
+    [cell fillWithModel:object];
+//    cell.userName.text = self.user.name;
+    return cell;
     
     return cell;
 }
