@@ -22,4 +22,6 @@
 - (void)setState:(NSUInteger)state withObject:(id)object;
 - (void)notifyOfState:(NSUInteger)state withObject:(id)object;
 
+
+
 @end
