@@ -12,6 +12,8 @@
 #import "UITableView+ZHExtension.h"
 #import "UINib+ZHExtension.h"
 #import "ZHUser.h"
+#import "ZHArrayModels.h"
+#import "ZHArrayChange.h"
 
 
 
@@ -21,6 +23,7 @@
 
 @interface ZHTableViewController ()
 @property NSMutableArray *objectsCell;
+@property (nonatomic, strong)   ZHUser      *user;
 
 @end
 
@@ -62,7 +65,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objectsCell.count;
+    return self.user.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -8,12 +8,19 @@
 
 #import "ZHObservableObject.h"
 
+#import "ZHMacros.h"
+
 
 
 @interface ZHObservableObject ()
-@property (nonatomic, retain) NSHashTable     *observersTable;
+@property (nonatomic, retain) NSHashTable       *observersTable;
+@property (nonatomic, assign) BOOL              notifyObservers;
 
 - (void)notifyOfStateWithSelector:(SEL)selector object:(id)object;
+
+- (void)performBlock:(void (^)(void))block
+        shouldNotify:(BOOL)shouldNotify;
+
 
 @end
 
@@ -105,6 +112,15 @@
     }
 }
 
+- (void)performBlockWithNotification:(void (^)(void))block {
+    [self performBlock:block shouldNotify:YES];
+}
+
+- (void)performBlockWithoutNotification:(void (^)(void))block {
+    [self performBlock:block shouldNotify:NO];
+}
+
+
 #pragma mark -
 #pragma mark Private implementations
 
@@ -121,6 +137,18 @@
             }
         }
     }
+}
+
+- (void)performBlock:(void (^)(void))block
+        shouldNotify:(BOOL)shouldNotify
+{
+    BOOL state = self.notifyObservers;
+    
+    self.notifyObservers = shouldNotify;
+    
+    ZHPerformBlock(block);
+    
+    self.notifyObservers = state;
 }
 
 @end

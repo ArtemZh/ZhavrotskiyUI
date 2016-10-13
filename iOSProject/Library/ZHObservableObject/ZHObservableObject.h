@@ -22,6 +22,8 @@
 - (void)setState:(NSUInteger)state withObject:(id)object;
 - (void)notifyOfState:(NSUInteger)state withObject:(id)object;
 
+- (void)performBlockWithNotification:(void (^)(void))block;
+- (void)performBlockWithoutNotification:(void (^)(void))block;
 
 
 @end

@@ -12,7 +12,7 @@
 @class ZHUser;
 
 @interface ZHTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong)   ZHUser      *user;
+
 
 
 //- (IBAction)onAddButton:(id)sender;

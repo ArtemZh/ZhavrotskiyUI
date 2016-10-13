@@ -8,6 +8,11 @@
 
 #define HZEmpty
 
+#define ZHPerformBlock(block, ...) \
+    if (block) { \
+    block(__VA_ARGS__); \
+    } \
+
 
 #define ZHWeakify(variable) \
 __weak __typeof(variable) __ZHWeakified_##variable = variable;
