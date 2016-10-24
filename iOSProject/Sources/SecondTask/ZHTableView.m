@@ -10,12 +10,13 @@
 
 @implementation ZHTableView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)editingMode {
+    BOOL editing = self.usersTableView.editing;
+    
+    self.editButton.hidden = !editing;
+    self.doneButton.hidden = editing;
+    
+    self.usersTableView.editing = !editing;
 }
-*/
 
 @end

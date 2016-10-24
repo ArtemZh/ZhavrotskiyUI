@@ -16,7 +16,7 @@ typedef enum {
 } ZHEditingType;
 
 
-@interface ZHArrayModels : NSObject
+@interface ZHArrayModels : ZHObservableObject
 
 @property (nonatomic, readonly) NSArray     *modelsArray;
 @property (nonatomic, readonly) NSUInteger  count;
@@ -26,6 +26,12 @@ typedef enum {
 
 - (void)addUsersArray:(NSArray *)array;
 
-- (id)userAtIndex:(NSUInteger)index;
+- (id)modelAtIndex:(NSUInteger)index;
+
+- (void)insertModel:(id)user atIndex:(NSUInteger)index notify:(BOOL)notify;
+- (void)removeModelAtIndex:(NSUInteger)index notify:(BOOL)notify;
+
+- (void)moveModelFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
+
 
 @end

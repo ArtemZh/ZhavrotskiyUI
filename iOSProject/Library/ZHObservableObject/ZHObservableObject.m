@@ -14,7 +14,7 @@
 
 @interface ZHObservableObject ()
 @property (nonatomic, retain) NSHashTable       *observersTable;
-@property (nonatomic, assign) BOOL              notifyObservers;
+@property (nonatomic, assign) BOOL              shouldNotify;
 
 - (void)notifyOfStateWithSelector:(SEL)selector object:(id)object;
 
@@ -142,13 +142,13 @@
 - (void)performBlock:(void (^)(void))block
         shouldNotify:(BOOL)shouldNotify
 {
-    BOOL state = self.notifyObservers;
+    BOOL state = self.shouldNotify;
     
-    self.notifyObservers = shouldNotify;
+    self.shouldNotify = shouldNotify;
     
     ZHPerformBlock(block);
     
-    self.notifyObservers = state;
+    self.shouldNotify = state;
 }
 
 @end

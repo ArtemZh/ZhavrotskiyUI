@@ -9,9 +9,11 @@
 #define HZEmpty
 
 #define ZHPerformBlock(block, ...) \
-    if (block) { \
-    block(__VA_ARGS__); \
-    } \
+    do { \
+        if (block) { \
+        block(__VA_ARGS__); \
+        } \
+    } while(0) \
 
 
 #define ZHWeakify(variable) \
@@ -26,25 +28,25 @@ __strong __typeof(variable) variable = __ZHWeakified_##variable;
 
 #define ZHBaseViewGetterSyntesize(selector, viewClass) \
 - (viewClass *)selector { \
-if ([self isViewLoaded] && [self.view isKindOfClass:[viewClass class]]) { \
-return (viewClass *)self.view; \
-} \
-\
-return nil; \
+    if ([self isViewLoaded] && [self.view isKindOfClass:[viewClass class]]) { \
+    return (viewClass *)self.view; \
+    } \
+    \
+    return nil; \
 }
 
 
 #define ZHViewControllerBaseViewPropertyWithGetter(viewControllerClass, propertyName, baseViewClass) \
-@interface viewControllerClass (__ZHPrivateBaseView_##viewControllerClass_##propertyName) \
-ZHDefineBaseViewProrety(propertyName, baseViewClass)\
-\
-@end \
-\
-@implementation viewControllerClass (__ZHPrivateBaseView_##viewControllerClass_##propertyName) \
-\
-@dynamic propertyName; \
-\
-ZHBaseViewGetterSyntesize(propertyName, baseViewClass)\
-\
-@end
+    @interface viewControllerClass (__ZHPrivatBaseView) \
+    ZHDefineBaseViewProrety(propertyName, baseViewClass)\
+    \
+    @end \
+    \
+    @implementation viewControllerClass (__ZHPrivatBaseView) \
+    \
+    @dynamic propertyName; \
+    \
+    ZHBaseViewGetterSyntesize(propertyName, baseViewClass)\
+    \
+    @end
 

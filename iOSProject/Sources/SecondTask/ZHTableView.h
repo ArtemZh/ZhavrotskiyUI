@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHTableView : UIView
+@property (nonatomic, strong) IBOutlet UITableView  *usersTableView;
+@property (nonatomic, strong) IBOutlet UIButton     *doneButton;
+@property (nonatomic, strong) IBOutlet UIButton     *addButton;
+@property (nonatomic, strong) IBOutlet UIButton     *editButton;
+
+- (void)editingMode;
 
 @end

@@ -7,36 +7,52 @@
 //
 
 #import "ZHTableViewController.h"
+#import "ZHTableView.h"
 #import "ZHUserCell.h"
 #import "ZHUserData.h"
 #import "UITableView+ZHExtension.h"
+#import "ZHArrayChange+UITableView.h"
 #import "UINib+ZHExtension.h"
 #import "ZHUser.h"
+#import "ZHUsers.h"
 #import "ZHArrayModels.h"
 #import "ZHArrayChange.h"
+#import "ZHObservableObject.h"
+
 
 
 
 #import "ZHMacros.h"
 
+static NSString * const kZHTableTitle = @"Minion List";
 
+ZHViewControllerBaseViewPropertyWithGetter(ZHTableViewController, usersView, ZHTableView)
 
 @interface ZHTableViewController ()
 @property NSMutableArray *objectsCell;
-@property (nonatomic, strong)   ZHUser      *user;
+@property (nonatomic, strong)   ZHUsers      *users;
 
 @end
 
 @implementation ZHTableViewController
 
+#pragma mark -
+#pragma mark Initalizations and deallocations
+
+- (void)dealloc {
+    [self.users removeObserver:self];
+}
+
+- (void)loadView {
+    [super loadView];
+    
+    ZHUsers *users = [[ZHUsers alloc] init];
+    [users addObserver:self];
+    self.users = users;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-
     
 }
 
@@ -45,53 +61,53 @@
     
 }
 
+#pragma mark -
+#pragma mark TableViewDelegate
 
-
-
-- (void)addNewObject:(id)sender {
-    NSString *title = @"test";
-    if (!self.objectsCell) {
-        self.objectsCell = [[NSMutableArray alloc] init];
-    }
-//    ZHUser *user = [ZHUser init];
-    
-    [self.objectsCell insertObject:title atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+#pragma mark -
+#pragma mark TableViewDataSource
+
+
+- (void)        tableView:(UITableView *)tableView
+       commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+        forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.users removeModelAtIndex:indexPath.row notify:YES];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return kZHTableTitle;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.user.count;
+    return self.users.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-//    
-//    NSString *object = self.objectsCell[indexPath.row];
-//    cell.textLabel.text = [object description];
-//
     ZHUserCell *cell = [tableView reusableCellfromNibWithClass:[ZHUserCell class]];
-    ZHUser * object = [ZHUser new];
-    
-    
-    [cell fillWithModel:object];
-//    cell.userName.text = self.user.name;
-    return cell;
+    cell.user = [self.users modelAtIndex:indexPath.row];
     
     return cell;
 }
 
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objectsCell removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+      toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [self.users moveModelFromIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+}
+
+
+- (void)collection:(id)collection didUpdateWithArrayChangeModel:(ZHArrayChange *)changeModel {
+    [changeModel applyToTableView:self.usersView.usersTableView];
+}
 
 @end
