@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSIndexPath_ZHExtensions : NSObject
+@interface NSIndexPath (ZHExtensions)
+
++ (NSIndexPath *)indexPathForRow:(NSUInteger)index;
 
 @end

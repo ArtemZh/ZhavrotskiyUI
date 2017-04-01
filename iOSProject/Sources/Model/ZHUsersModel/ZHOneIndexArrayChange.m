@@ -7,7 +7,33 @@
 //
 
 #import "ZHOneIndexArrayChange.h"
+#import "NSIndexPath+ZHExtensions.h"
 
 @implementation ZHOneIndexArrayChange
+
+@dynamic indexPath;
+
+#pragma mark -
+#pragma mark Initializations and deallocations
+
+- (instancetype)initWithIndex:(NSUInteger)index {
+    self = [super init];
+    if (self) {
+        self.index = index;
+    }
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSIndexPath *)indexPath {
+    return [NSIndexPath indexPathForRow:self.index];
+}
+
+@end
+
+
 
 @end

@@ -6,8 +6,14 @@
 //  Copyright © 2017 Artem Zhavrotskiy. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ZHArrayChange.h"
 
-@interface ZHOneIndexArrayChange : NSObject
+@interface ZHOneIndexArrayChange : ZHArrayChange
+
+@property (nonatomic, assign)   NSUInteger  index;
+@property (nonatomic, readonly) NSIndexPath *indexPath;
+
+- (instancetype)initWithIndex:(NSUInteger)index;
+
 
 @end

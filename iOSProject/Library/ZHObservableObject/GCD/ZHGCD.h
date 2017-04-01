@@ -8,6 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZHGCD : NSObject
+typedef void(^ZHGCDBlock)();
 
-@end
+typedef enum {
+    ZHDispatchQueuePriorityHigh        = DISPATCH_QUEUE_PRIORITY_HIGH,
+    ZHDispatchQueuePriorityDefault     = DISPATCH_QUEUE_PRIORITY_DEFAULT,
+    ZHDispatchQueuePriorityLow         = DISPATCH_QUEUE_PRIORITY_LOW,
+    ZHDispatchQueuePriorityBackground  = DISPATCH_QUEUE_PRIORITY_BACKGROUND,
+} ZHDispatchQueuePriorityType;
+
+typedef enum {
+    ZHBlockExecutionSynchronous,
+    ZHBlockExecutionAsynchronous
+} ZHBlockExecutionType;
+
+
+void ZHPerformAsyncBlockOnMainQueue(ZHGCDBlock block);
+void ZHPerformSyncBlockOnMainQueue(ZHGCDBlock block);
+
+void ZHPerformAsyncBlockOnBackgroundQueue(ZHGCDBlock block);
+void ZHPerformSyncBlockOnBackgroundQueue(ZHGCDBlock block);
+
+void ZHPerformAsyncBlockOnLowQueue(ZHGCDBlock block);
+void ZHPerformSyncBlockOnLowQueue(ZHGCDBlock block);
+
+dispatch_queue_t ZHDisptchQueueWithPriorityType(ZHDispatchQueuePriorityType type);

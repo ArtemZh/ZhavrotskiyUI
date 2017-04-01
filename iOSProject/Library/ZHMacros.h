@@ -8,6 +8,8 @@
 
 #define HZEmpty
 
+#define ZHEmpty
+
 #define ZHPerformBlock(block, ...) \
     do { \
         if (block) { \
@@ -50,3 +52,39 @@ __strong __typeof(variable) variable = __ZHWeakified_##variable;
     \
     @end
 
+#define ZHConstant(type, name, value) \
+    static const type name = value;
+
+
+#define ZHStringConstantWithValue(name, value) \
+    static NSString * const name = @#value
+
+
+#define ZHStringConstant(name) \
+    static NSString * const name = @#name
+
+#define ZHReturnOnce(type, variable, block)  \
+    do {\
+        static dispatch_once_t onceToken; \
+        static type *variable = nil; \
+        dispatch_once(&onceToken, ^{ \
+        if (block) { \
+        variable = block(); \
+        } \
+        }); \
+        \
+        return variable; \
+        \
+    } while (0)
+
+#define ZHStrongifyAndReturnIfNil(variable) \
+    ZHStrongifyAndReturnResultIfNil(variable, ZHEmpty)
+
+#define ZHStrongifyAndReturnNilIfNil(variable) \
+    ZHStrongifyAndReturnResultIfNil(variable, nil)
+
+#define ZHStrongifyAndReturnResultIfNil(variable, result) \
+    ZHStrongify(variable); \
+    if (!variable) { \
+        return result; \
+    }

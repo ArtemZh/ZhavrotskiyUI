@@ -8,6 +8,14 @@
 
 #import "NSIndexPath+ZHExtensions.h"
 
-@implementation NSIndexPath_ZHExtensions
+#import "UITableView+ZHExtension.h"
+
+
+@implementation NSIndexPath (ZHExtensions)
+
++ (NSIndexPath *)indexPathForRow:(NSUInteger)index {
+    return [self indexPathForRow:index inSection:0];
+}
 
 @end
+

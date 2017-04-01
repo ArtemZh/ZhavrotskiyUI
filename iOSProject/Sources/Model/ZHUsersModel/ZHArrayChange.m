@@ -7,6 +7,9 @@
 //
 
 #import "ZHArrayChange.h"
+#import "ZHAddingObject.h"
+#import "ZHRemovingObject.h"
+#import "ZHMovingObject.h"
 
 @implementation ZHArrayChange
 
